@@ -46,14 +46,14 @@ function Weather() {
         value={zipcode}
       ></input>
       <br></br>
-      <button onClick={handleClick}>Submit</button>
+      <button onClick={showZipcode}>Submit</button>
       <div>
-        <h3 className="h3">{weather}</h3>
+        {/* <h3 className="h3">{weather}</h3>
         <p className="city">City: {forecast?.name}</p>
         <p className="temp">Temperature: {forecast?.main.temp}&deg; F</p>
         <p className="conditions">
           Conditions: {forecast?.weather[0].description}
-        </p>
+        </p> */}
       </div>
     </div>
   );
