@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-import Weather from "./components/Weather";
+import Weather from "./pages/Weather/Weather";
 
 function App() {
   return (
