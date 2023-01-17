@@ -21,11 +21,18 @@ function Weather() {
     axios
       .get(`${locationBaseUrl}?q=${location}&appid=${apiKey}`)
       .then((res) => {
-        console.log(res.data[0].lon);
+        // console.log(res.data[0].lon);
         setLat(res.data[0].lat);
         setLong(res.data[0].lon);
       })
       .catch((err) => console.log(err));
+
+    // axios
+    //   .get(`${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (
