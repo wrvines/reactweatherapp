@@ -4,9 +4,9 @@ import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 import Forecast from "../../components/Forecast/Forecast";
 
 function Weather() {
-  const baseUrl = "https://api.openweathermap.org/data/3.0/onecall";
-  const apiKey = "3bc574a245ec78a822b5ac520c18060d";
-  const locationBaseUrl = "http://api.openweathermap.org/geo/1.0/direct";
+  const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
+  const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
+  const locationBaseUrl = process.env.REACT_APP_GEOCODE_BASE_URL;
 
   const [location, setLocation] = React.useState("");
   const [lat, setLat] = React.useState("");
@@ -21,7 +21,7 @@ function Weather() {
     axios
       .get(`${locationBaseUrl}?q=${location}&appid=${apiKey}`)
       .then((res) => {
-        // console.log(res.data[0].lon);
+        console.log(res.data[0].lon);
         setLat(res.data[0].lat);
         setLong(res.data[0].lon);
       })
