@@ -26,13 +26,6 @@ function Weather() {
         setLong(res.data[0].lon);
       })
       .catch((err) => console.log(err));
-
-    // axios
-    //   .get(`${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&units=imperial`)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   return (
