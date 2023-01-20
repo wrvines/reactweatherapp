@@ -39,6 +39,7 @@ function Weather() {
         />
         <button type="submit">Get Weather</button>
       </form>
+      <h1>{`Weather for ${location}`}</h1>
       <CurrentWeather lat={lat} long={long} />
       <Forecast />
     </div>
