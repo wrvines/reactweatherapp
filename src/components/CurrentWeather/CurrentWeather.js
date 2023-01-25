@@ -24,7 +24,7 @@ function CurrentWeather({ lat, long }) {
         `${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setCurrentWeather(res.data);
       })
       .catch((err) => console.log(err));
@@ -41,7 +41,7 @@ function CurrentWeather({ lat, long }) {
         alt=""
       />
       <h4>{`${currentWeather?.current?.weather[0]?.description}`}</h4>
-      <p>{`${currentWeather?.daily?.temp?.max}`}</p>
+      {/* <p>{`${currentWeather?.daily?.temp?.max}`}</p> */}
     </div>
   );
 }
