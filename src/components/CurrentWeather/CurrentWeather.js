@@ -5,7 +5,7 @@ import "./CurrentWeather.css";
 function CurrentWeather({ lat, long }) {
   const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  const locationBaseUrl = process.env.REACT_APP_GEOCODE_BASE_URL;
+  // const locationBaseUrl = process.env.REACT_APP_GEOCODE_BASE_URL;
 
   const [currentWeather, setCurrentWeather] = React.useState("");
 

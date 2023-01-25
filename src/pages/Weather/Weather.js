@@ -2,9 +2,10 @@ import axios from "axios";
 import React from "react";
 import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 import Forecast from "../../components/Forecast/Forecast";
+import "./Weather.css";
 
 function Weather() {
-  const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
+  // const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const locationBaseUrl = process.env.REACT_APP_GEOCODE_BASE_URL;
 
@@ -29,19 +30,23 @@ function Weather() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLocation}>
-        <input
-          type="text"
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter City"
-          value={location}
-        />
-        <button type="submit">Get Weather</button>
-      </form>
-      <h1>{`Weather for ${location}`}</h1>
-      <CurrentWeather lat={lat} long={long} />
-      <Forecast />
+    <div className="weather-container">
+      <div className="weather-search">
+        <form onSubmit={handleLocation}>
+          <input
+            type="text"
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Enter City"
+            value={location}
+          />
+          <button type="submit">Get Weather</button>
+        </form>
+      </div>
+      <div className="weather-wrapper">
+        <h1>{`Weather for ${location}`}</h1>
+        <CurrentWeather lat={lat} long={long} />
+        <Forecast lat={lat} long={long} />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;   
+}
+
+:root {
+    --bgDayHeader: #FFD8BE;
+    --bgDayBody: #FFEEDD;
+    --bgNightBody: #B8B8FF;
+    --bgNightHeader: #9381FF;
+}
+
+.app {
+    background-color: #F8F7FF;
+}
+
