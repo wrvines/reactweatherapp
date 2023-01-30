@@ -20,7 +20,7 @@ function Forecast({ lat, long }) {
       .catch((err) => console.log(err));
   }, [lat, long]);
 
-  console.log(forecast?.humidity);
+  // console.log(forecast?.humidity);
   return (
     <div className="forecast-container">
       <h1>Forecast</h1>
