@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(8, 1fr);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .weather-search {
@@ -27,4 +27,5 @@
     flex-direction: column;
     padding: 2rem;
     background-color: var(--bgDayBody);
+    
 }

@@ -1,0 +1,22 @@
+.current-container {
+    border: 1px solid blue;
+    display: grid;
+}
+
+.current-wrapper {
+    background-color: var(--bgDayHeader);
+    display: grid;
+
+}
+
+.current-weather-top {
+    padding: 1rem;
+}
+
+.current-weather-bottom {
+    padding: 1rem;
+}
+
+.forecast-wrapper {
+    display: flex;
+}
