@@ -4,7 +4,7 @@ import CurrentWeather from "../../components/CurrentWeather/CurrentWeather";
 import Forecast from "../../components/Forecast/Forecast";
 import "./Weather.css";
 
-function Weather({ latitude, longitude, status }) {
+function Weather({ latitude, longitude }) {
   // const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
@@ -15,6 +15,8 @@ function Weather({ latitude, longitude, status }) {
   const [long, setLong] = React.useState("");
   const [localWeather, setLocalWeather] = React.useState("");
   const [success, setSuccess] = React.useState(false);
+  const [currentWeather, setCurrentWeather] = React.useState("");
+  const [forecast, setForecast] = React.useState([]);
 
   const handleLocation = (e) => {
     e.preventDefault();
@@ -44,6 +46,18 @@ function Weather({ latitude, longitude, status }) {
       })
       .catch((err) => console.log(err));
   }, []);
+  React.useEffect(() => {
+    axios
+      .get(
+        `${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
+      )
+      .then((res) => {
+        console.log(res.data.daily);
+        setCurrentWeather(res.data);
+        setForecast(res.data.daily);
+      })
+      .catch((err) => console.log(err));
+  }, [lat, long]);
 
   return (
     <div className="weather-container">
@@ -59,15 +73,33 @@ function Weather({ latitude, longitude, status }) {
         </form>
       </div>
       <div className="weather-wrapper">
-        {!success ? (
+        {success ? (
           <div>
-            <h3>{localWeather?.current?.temp}</h3>
+            <div>
+              <CurrentWeather
+                temp={currentWeather?.current?.temp}
+                humidity={currentWeather?.current?.humidity}
+                wind={currentWeather?.current?.wind_speed}
+                conditions={currentWeather?.current?.weather[0]?.main}
+                image={currentWeather?.current?.weather[0]?.icon}
+              />
+            </div>
+            <div className="forecast-wrapper">
+              {forecast?.map((daily) => (
+                <Forecast
+                  max={daily?.temp?.max}
+                  min={daily?.temp?.min}
+                  wind={daily?.wind_speed}
+                  conditions={daily?.weather[0]?.main}
+                  image={daily?.weather[0]?.icon}
+                />
+              ))}
+            </div>
           </div>
         ) : (
+          // <div>{`Current weather in your location is ${localWeather}`}</div>
           <div>
-            <h1>{`Weather for ${location}`}</h1>
-            <CurrentWeather lat={lat} long={long} />
-            {/* <Forecast lat={lat} long={long} /> */}
+            <h1>Enter your city to see you weather.</h1>
           </div>
         )}
       </div>

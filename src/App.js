@@ -4,38 +4,51 @@ import "./App.css";
 import Weather from "./pages/Weather/Weather";
 
 function App() {
-  const [latitude, setLatitude] = React.useState(null);
-  const [longitude, setLongitude] = React.useState(null);
-  const [status, setStatus] = React.useState(null);
+  const [latitude, setLatitude] = React.useState({});
+  const [longitude, setLongitude] = React.useState({});
+  const [geolocation, setGeolocation] = React.useState({});
 
-  const getLocation = () => {
-    if (!navigator.geolocation) {
-      setStatus("Geolocation is not supported by your browser");
-    } else {
-      setStatus("Location... ");
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setStatus(null);
-          setLatitude(position.coords.latitude);
-          setLongitude(position.coords.longitude);
-          console.log(latitude);
-          console.log(longitude);
-        },
-        () => {
-          setStatus("Unable to retieve your location");
-        }
-      );
-    }
-  };
+  // const getLocation = () => {
+  //   if (!navigator.geolocation) {
+  //     setStatus("Geolocation is not supported by your browser");
+  //   } else {
+  //     setStatus("Location... ");
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         setStatus(null);
+  //         setLatitude(position.coords.latitude);
+  //         setLongitude(position.coords.longitude);
+  //         console.log(latitude);
+  //         console.log(longitude);
+  //       },
+  //       () => {
+  //         setStatus("Unable to retieve your location");
+  //       }
+  //     );
+  //   }
+  // };
 
   React.useEffect(() => {
-    getLocation();
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (postion) => {
+          setGeolocation({
+            lat: postion.coords.latitude,
+            long: postion.coords.longitude,
+          });
+          console.log(geolocation.long);
+        },
+        (err) => console.log(err)
+      );
+    } else {
+      console.error("Geolocation is not supported by your browser.");
+    }
   }, []);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Weather latitude={latitude} longitude={longitude} status={status} />
+        <Weather latitude={geolocation.lat} longitude={geolocation.long} />
       </BrowserRouter>
     </div>
   );

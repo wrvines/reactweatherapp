@@ -21,11 +21,15 @@ function Forecast({ lat, long, max, min, wind, conditions, image }) {
   // }, [lat, long]);
   return (
     <div className="forecast-container">
-      <img src={`http://openweathermap.org/img/wn/${image}@2x.png`} alt="" />
-      <p>{max}</p>
-      <p>{min}</p>
-      <p>{wind}</p>
-      <p>{conditions}</p>
+      <div className="forecast-left">
+        <img src={`http://openweathermap.org/img/wn/${image}@2x.png`} alt="" />
+        <p>{conditions}</p>
+      </div>
+      <div className="forecast-right">
+        <p>{max}</p>
+        <p>{min}</p>
+        <p>{wind}</p>
+      </div>
     </div>
   );
 }
