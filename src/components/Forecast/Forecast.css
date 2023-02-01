@@ -1,0 +1,30 @@
+.forecast-container {
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.45);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+}
+
+.forecast-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+    font-size: clamp(1rem, 2.5rem, 4rem);
+}
+
+.forecast-left img {
+    width: clamp(2rem, 10rem, 13rem);
+}
+
+.forecast-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: clamp(1rem, 2rem, 3.5rem);
+    /* line-height: 4rem; */
+    
+}
