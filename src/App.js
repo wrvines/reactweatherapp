@@ -28,22 +28,22 @@ function App() {
   //   }
   // };
 
-  React.useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (postion) => {
-          setGeolocation({
-            lat: postion.coords.latitude,
-            long: postion.coords.longitude,
-          });
-          console.log(geolocation.long);
-        },
-        (err) => console.log(err)
-      );
-    } else {
-      console.error("Geolocation is not supported by your browser.");
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (postion) => {
+  //         setGeolocation({
+  //           lat: postion.coords.latitude,
+  //           long: postion.coords.longitude,
+  //         });
+  //         console.log(geolocation.long);
+  //       },
+  //       (err) => console.log(err)
+  //     );
+  //   } else {
+  //     console.error("Geolocation is not supported by your browser.");
+  //   }
+  // }, []);
 
   return (
     <div className="App">

@@ -73,35 +73,35 @@ function Weather({ latitude, longitude }) {
         </form>
       </div>
       <div className="weather-wrapper">
-        {success ? (
+        {/* {success ? ( */}
+        <div>
           <div>
-            <div>
-              <CurrentWeather
-                temp={currentWeather?.current?.temp}
-                humidity={currentWeather?.current?.humidity}
-                wind={currentWeather?.current?.wind_speed}
-                conditions={currentWeather?.current?.weather[0]?.main}
-                image={currentWeather?.current?.weather[0]?.icon}
-              />
-            </div>
-            <div className="forecast-wrapper">
-              {forecast?.map((daily) => (
-                <Forecast
-                  max={daily?.temp?.max}
-                  min={daily?.temp?.min}
-                  wind={daily?.wind_speed}
-                  conditions={daily?.weather[0]?.main}
-                  image={daily?.weather[0]?.icon}
-                />
-              ))}
-            </div>
+            <CurrentWeather
+              temp={currentWeather?.current?.temp}
+              humidity={currentWeather?.current?.humidity}
+              wind={currentWeather?.current?.wind_speed}
+              conditions={currentWeather?.current?.weather[0]?.main}
+              image={currentWeather?.current?.weather[0]?.icon}
+            />
           </div>
-        ) : (
+          <div className="forecast-wrapper">
+            {forecast?.map((daily) => (
+              <Forecast
+                max={daily?.temp?.max}
+                min={daily?.temp?.min}
+                wind={daily?.wind_speed}
+                conditions={daily?.weather[0]?.main}
+                image={daily?.weather[0]?.icon}
+              />
+            ))}
+          </div>
+        </div>
+        {/* ) : (
           // <div>{`Current weather in your location is ${localWeather}`}</div>
           <div>
             <h1>Enter your city to see you weather.</h1>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
