@@ -34,18 +34,18 @@ function Weather({ latitude, longitude }) {
       })
       .catch((err) => console.log(err));
   };
-  React.useEffect(() => {
-    axios
-      .get(
-        `${baseUrl}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
-      )
-      .then((res) => {
-        console.log(res.data);
-        console.log(longitude);
-        setLocalWeather(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  // React.useEffect(() => {
+  //   axios
+  //     .get(
+  //       `${baseUrl}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
+  //     )
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       console.log(longitude);
+  //       setLocalWeather(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
   React.useEffect(() => {
     axios
       .get(
@@ -64,6 +64,7 @@ function Weather({ latitude, longitude }) {
       <div className="weather-search">
         <form onSubmit={handleLocation}>
           <input
+            className="search-input"
             type="text"
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Enter City"
