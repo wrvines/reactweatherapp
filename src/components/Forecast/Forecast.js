@@ -8,6 +8,34 @@ function Forecast({ lat, long, max, min, wind, conditions, image }) {
 
   const [forecast, setForecast] = React.useState([]);
 
+  React.useEffect(() => {
+    axios
+      .get(
+        `${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
+      )
+      .then((res) => {
+        console.log(res.data.daily);
+        setForecast(res.data.daily);
+      })
+      .catch((err) => console.log(err));
+  }, [lat, long]);
+
+  // console.log(forecast?.humidity);
+  return (
+    <div className="forecast-container">
+      <h1>Forecast</h1>
+      {/* {forecast.map((forecast) => {
+        <div>
+          Weather image
+          <p></p>
+          <p>Weather info</p>
+          <p>High</p>
+          <p>Low</p>
+        </div>;
+      })} */}
+    </div>
+  );
+
   // React.useEffect(() => {
   //   axios
   //     .get(
