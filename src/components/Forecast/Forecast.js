@@ -9,6 +9,11 @@ function Forecast({ lat, long, max, min, wind, conditions, image, time }) {
   const unixDate = new Date(time * 1000);
   let options = { day: "numeric", month: "long" };
   let date = unixDate.toLocaleDateString("en-US", options);
+
+  const high = Math.round(max);
+  const low = Math.round(min);
+  const windSpeed = Math.round(wind);
+
   // console.log(date);
   // React.useEffect(() => {
   //   axios
@@ -29,9 +34,12 @@ function Forecast({ lat, long, max, min, wind, conditions, image, time }) {
         <p>{conditions}</p>
       </div>
       <div className="forecast-right">
-        <p>{`High: ${max}`}</p>
-        <p>{`Low: ${min}`}</p>
-        <p>{`Wind: ${wind}`}</p>
+        <p>{`High: ${high} \u00b0`}</p>
+        <p>{`Low: ${low} \u00b0`}</p>
+        <p>
+          {`Wind: ${windSpeed}`}
+          <span className="speed"> mph</span>
+        </p>
       </div>
     </div>
   );

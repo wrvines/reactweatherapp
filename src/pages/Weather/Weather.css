@@ -11,11 +11,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-right: 2rem;
     background-color: var(--bgDayHeader);
     box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.45);
     z-index: 2;
-    
 }
 
 .search-form {
@@ -74,9 +72,20 @@
     
     .search-form {
         flex-direction: column;
+        padding: 2rem 0;
+        border: 1px solid red;
     }
 
     .weather-search button {
         margin: 1rem 0 0 0;
+        width: 10rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .search-input {
+        width: 10rem;
+        height: 3rem;
+        font-size: 1rem;
     }
 }

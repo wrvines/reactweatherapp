@@ -44,7 +44,10 @@ function CurrentWeather({ temp, humidity, wind, conditions, image, time }) {
         <div className="current-weather-bottom">
           <h1>{`${temp} \u00b0`}</h1>
           <p>{`Humidity: ${humidity}%`}</p>
-          <p>{`Wind: ${wind}`}</p>
+          <p>
+            {`Wind: ${wind}`}
+            <span className="speed"> mph</span>
+          </p>
         </div>
       </div>
       {/* <div className="forecast-wrapper">

@@ -5,6 +5,8 @@ import Forecast from "../../components/Forecast/Forecast";
 import "./Weather.css";
 
 function Weather({ latitude, longitude }) {
+  // console.log(`${locationBaseUrl}?q=${location}&appid=${apiKey}`);
+  //http: api.openweathermap.org/geo/1.0/direct?q=casper&appid=3bc574a245ec78a822b5ac520c18060d
   // const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
   const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
@@ -20,10 +22,6 @@ function Weather({ latitude, longitude }) {
 
   const handleLocation = (e) => {
     e.preventDefault();
-    // console.log(location);
-    // console.log(`${locationBaseUrl}?q=${location}&appid=${apiKey}`);
-    //http: api.openweathermap.org/geo/1.0/direct?q=casper&appid=3bc574a245ec78a822b5ac520c18060d
-
     axios
       .get(`${locationBaseUrl}?q=${location}&appid=${apiKey}`)
       .then((res) => {
@@ -103,7 +101,7 @@ function Weather({ latitude, longitude }) {
         ) : (
           // <div>{`Current weather in your location is ${localWeather}`}</div>
           <div>
-            <h1>Enter your city to see you weather.</h1>
+            <h1>Enter your city to see your weather.</h1>
           </div>
         )}
       </div>
