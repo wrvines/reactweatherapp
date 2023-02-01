@@ -52,9 +52,10 @@ function Weather({ latitude, longitude }) {
         `${baseUrl}?lat=${lat}&lon=${long}&appid=${apiKey}&exclude=minutely,hourly,alerts&units=imperial`
       )
       .then((res) => {
-        console.log(res.data.daily);
+        // console.log(res.data.daily);
         setCurrentWeather(res.data);
         setForecast(res.data.daily);
+        // console.log(forecast);
       })
       .catch((err) => console.log(err));
   }, [lat, long]);
@@ -62,47 +63,49 @@ function Weather({ latitude, longitude }) {
   return (
     <div className="weather-container">
       <div className="weather-search">
-        <form onSubmit={handleLocation}>
+        <form onSubmit={handleLocation} className="search-form">
           <input
             className="search-input"
             type="text"
             onChange={(e) => setLocation(e.target.value)}
             placeholder="Enter City"
-            // value={location}
+            value={location}
           />
           <button type="submit">Get Weather</button>
         </form>
       </div>
       <div className="weather-wrapper">
-        {/* {success ? ( */}
-        <div>
+        {success ? (
           <div>
-            <CurrentWeather
-              temp={currentWeather?.current?.temp}
-              humidity={currentWeather?.current?.humidity}
-              wind={currentWeather?.current?.wind_speed}
-              conditions={currentWeather?.current?.weather[0]?.main}
-              image={currentWeather?.current?.weather[0]?.icon}
-            />
-          </div>
-          <div className="forecast-wrapper">
-            {forecast?.map((daily) => (
-              <Forecast
-                max={daily?.temp?.max}
-                min={daily?.temp?.min}
-                wind={daily?.wind_speed}
-                conditions={daily?.weather[0]?.main}
-                image={daily?.weather[0]?.icon}
+            <div>
+              <CurrentWeather
+                temp={currentWeather?.current?.temp}
+                humidity={currentWeather?.current?.humidity}
+                wind={currentWeather?.current?.wind_speed}
+                conditions={currentWeather?.current?.weather[0]?.main}
+                image={currentWeather?.current?.weather[0]?.icon}
+                time={currentWeather?.current?.dt}
               />
-            ))}
+            </div>
+            <div className="forecast-wrapper">
+              {forecast?.map((daily) => (
+                <Forecast
+                  max={daily?.temp?.max}
+                  min={daily?.temp?.min}
+                  wind={daily?.wind_speed}
+                  conditions={daily?.weather[0]?.main}
+                  image={daily?.weather[0]?.icon}
+                  time={daily?.dt}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-        {/* ) : (
+        ) : (
           // <div>{`Current weather in your location is ${localWeather}`}</div>
           <div>
             <h1>Enter your city to see you weather.</h1>
           </div>
-        )} */}
+        )}
       </div>
     </div>
   );

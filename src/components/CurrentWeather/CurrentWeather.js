@@ -4,23 +4,14 @@ import { WiDegrees } from "react-icons/wi";
 import Forecast from "../Forecast/Forecast";
 import "./CurrentWeather.css";
 
-function CurrentWeather({ temp, humidity, wind, conditions, image }) {
+function CurrentWeather({ temp, humidity, wind, conditions, image, time }) {
   const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
-  // const locationBaseUrl = process.env.REACT_APP_GEOCODE_BASE_URL;
 
-  const [currentWeather, setCurrentWeather] = React.useState("");
-  const [forecast, setForecast] = React.useState([]);
-
-  const unixTimestamp = currentWeather?.current?.dt;
-  // const unixDate = new Date(unixTimestamp);
-  // const localDate = new Date(
-  //   unixDate.getTime() + unixDate.getTimezoneOffset() * 6000
-  // );
-  // const convertToLocalTime = () => {
-  //   const date = new Date(unixTimestamp);
-  //   return date.toLocaleDateString();
-  // };
+  const unixDate = new Date(time * 1000);
+  let options = { day: "numeric", month: "long" };
+  let date = unixDate.toLocaleDateString("en-US", options);
+  // console.log(date);
 
   // const icon = `http://openweathermap.org/img/wn/${fetchIcon}@2x.png`;
   // https://api.openweathermap.org/data/3.0/onecall?lat=39.7392364&lon=-104.984862&appid=3bc574a245ec78a822b5ac520c18060d&exclude=minutely,hourly,alerts&units=imperial
@@ -42,6 +33,7 @@ function CurrentWeather({ temp, humidity, wind, conditions, image }) {
     <div className="current-container">
       <div className="current-wrapper">
         <div className="current-weather-top">
+          <h3>{`${date}`}</h3>
           <img
             src={`http://openweathermap.org/img/wn/${image}@2x.png`}
             alt=""
@@ -53,7 +45,6 @@ function CurrentWeather({ temp, humidity, wind, conditions, image }) {
           <h1>{`${temp} \u00b0`}</h1>
           <p>{`Humidity: ${humidity}%`}</p>
           <p>{`Wind: ${wind}`}</p>
-          {/* <h3>{`The time is ${convertToLocalTime()}`}</h3> */}
         </div>
       </div>
       {/* <div className="forecast-wrapper">
