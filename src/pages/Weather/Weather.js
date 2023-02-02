@@ -83,6 +83,8 @@ function Weather({ latitude, longitude }) {
                 conditions={currentWeather?.current?.weather[0]?.main}
                 image={currentWeather?.current?.weather[0]?.icon}
                 time={currentWeather?.current?.dt}
+                sunrise={currentWeather?.current?.sunrise}
+                sunset={currentWeather?.current?.sunset}
               />
             </div>
             <div className="forecast-wrapper">

@@ -4,13 +4,25 @@ import { WiDegrees } from "react-icons/wi";
 import Forecast from "../Forecast/Forecast";
 import "./CurrentWeather.css";
 
-function CurrentWeather({ temp, humidity, wind, conditions, image, time }) {
+function CurrentWeather({
+  temp,
+  humidity,
+  wind,
+  conditions,
+  image,
+  time,
+  sunrise,
+  sunset,
+}) {
   const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 
   const unixDate = new Date(time * 1000);
+  const unixSunrise = new Date(sunrise * 1000);
   let options = { day: "numeric", month: "long" };
+  let optionsTwo = { hour: "numeric", minute: "numeric" };
   let date = unixDate.toLocaleDateString("en-US", options);
+  let sunRise = unixSunrise.toLocaleTimeString("en-US", optionsTwo);
   // console.log(date);
 
   // const icon = `http://openweathermap.org/img/wn/${fetchIcon}@2x.png`;
@@ -48,6 +60,7 @@ function CurrentWeather({ temp, humidity, wind, conditions, image, time }) {
             {`Wind: ${wind}`}
             <span className="speed"> mph</span>
           </p>
+          <p>{`Sunrise: ${sunRise}`}</p>
         </div>
       </div>
       {/* <div className="forecast-wrapper">
