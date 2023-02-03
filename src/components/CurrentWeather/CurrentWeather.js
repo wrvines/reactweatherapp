@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { WiDegrees } from "react-icons/wi";
+// import { WiDegrees } from "react-icons/wi";
 import Forecast from "../Forecast/Forecast";
 import "./CurrentWeather.css";
 
