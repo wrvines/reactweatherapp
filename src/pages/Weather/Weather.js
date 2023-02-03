@@ -53,9 +53,9 @@ function Weather({ latitude, longitude }) {
         // console.log(res.data.daily);
         setCurrentWeather(res.data);
         setForecast(res.data.daily);
-        // console.log(forecast);
+        console.log(forecast);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err.data));
   }, [lat, long]);
 
   return (
