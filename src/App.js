@@ -48,11 +48,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Weather
-          latitude={geolocation.lat}
-          longitude={geolocation.long}
-          path="/"
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Weather
+                latitude={geolocation.lat}
+                longitude={geolocation.long}
+              />
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </div>
   );
