@@ -4,9 +4,9 @@ import "./App.css";
 import Weather from "./pages/Weather/Weather";
 
 function App() {
-  const [latitude, setLatitude] = React.useState({});
-  const [longitude, setLongitude] = React.useState({});
-  const [geolocation, setGeolocation] = React.useState({});
+  // const [latitude, setLatitude] = React.useState({});
+  // const [longitude, setLongitude] = React.useState({});
+  // const [geolocation, setGeolocation] = React.useState({});
 
   // const getLocation = () => {
   //   if (!navigator.geolocation) {
@@ -53,8 +53,8 @@ function App() {
             path="/"
             element={
               <Weather
-                latitude={geolocation.lat}
-                longitude={geolocation.long}
+              // latitude={geolocation.lat}
+              // longitude={geolocation.long}
               />
             }
           />
